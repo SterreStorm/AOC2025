@@ -1,4 +1,4 @@
-import math
+
 def parse_input(filename):
     rotations = []
     with open(filename, "r") as inp:
