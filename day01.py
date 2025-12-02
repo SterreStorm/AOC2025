@@ -1,4 +1,8 @@
 
+
+puzzle_input = "Input/day01.txt"
+test_input = "Input/day01_short.txt"
+
 def parse_input(filename):
     rotations = []
     with open(filename, "r") as inp:
@@ -16,7 +20,7 @@ def rotate(filename, starting_pos):
         movement = int(rotation[1:])
 
         # Add full rotations to count, determine non-full rotation
-        count += int(movement/100)
+        count += movement // 100
         movement = movement % 100
 
         current_pos = (previous_pos - movement) if direction == "L" else previous_pos + movement
@@ -40,5 +44,5 @@ def rotate(filename, starting_pos):
     print(f"password: {count}")
 
 
-rotate("Input/day01_short.txt", 50)
-rotate("Input/day01.txt", 50)
+rotate(test_input, 50)
+rotate(puzzle_input, 50)
