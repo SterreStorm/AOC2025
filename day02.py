@@ -19,8 +19,7 @@ def check_pt_2(str_id):
 def check_pt2_alt(len_id, str_id):
     divisors = [x for x in range(1, len_id // 2 + 1) if len_id % x == 0]
     for divisor in divisors:
-        alt_str = str_id[divisor:] + str_id[:divisor]
-        if str_id == alt_str:
+        if str_id == str_id[divisor:] + str_id[:divisor]:
             return True
     return False
 
@@ -47,7 +46,6 @@ def main(filename, alt = False):
 
     ranges = parse_input(filename)
     pt_1, pt_2 = sum_invalid(ranges, alt)
-
 
     print(f"{dataset}:\n Part 1: {pt_1} \n Part 2: {pt_2}")
     print("--- %s ms ---" % ((time.time_ns() - start_time) / 1000000))
