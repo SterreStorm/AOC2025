@@ -1,6 +1,8 @@
+import time
 
 puzzle_input = "Input/day02.txt"
 test_input = "Input/day02_short.txt"
+
 
 def parse_input(filename):
     with open(filename) as inp:
@@ -9,11 +11,7 @@ def parse_input(filename):
 
 def check_pt_1(len_id, str_id):
     # part one
-    if len_id % 2 == 0:
-        half = len_id // 2
-        if int(str_id[0:half]) == int(str_id[half:]):
-            return True
-    return False
+    return len_id % 2 == 0 and int(str_id[0:len_id // 2]) == int(str_id[len_id // 2:])
 
 def check_pt_2(str_id):
     i = (str_id + str_id).find(str_id, 1, -1)
@@ -46,12 +44,16 @@ def sum_invalid(ranges, alt):
     return sum_pairs_pt1, sum_pairs_pt2
 
 def main(filename, alt = False):
+    start_time = time.time_ns()
     dataset = ("Puzzle input" if filename.find("short") == -1 else "Test input") + (" (alternatieve uitvoering)" if alt else "")
 
     ranges = parse_input(filename)
     pt_1, pt_2 = sum_invalid(ranges, alt)
-    print(f"{dataset}:\n Part 1: {pt_1} \n Part 2: {pt_2} \n ")
 
-main(test_input, True)
-main(test_input)
-#main(puzzle_input)
+
+    print(f"{dataset}:\n Part 1: {pt_1} \n Part 2: {pt_2}")
+    print("--- %s ms ---" % ((time.time_ns() - start_time) / 1000000))
+
+# main(test_input, True)
+# main(test_input)
+main(puzzle_input, True)
