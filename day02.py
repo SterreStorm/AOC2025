@@ -3,11 +3,14 @@ import time
 puzzle_input = "Input/day02.txt"
 test_input = "Input/day02_short.txt"
 
-
 def parse_input(filename):
     with open(filename) as inp:
         ranges = [(int(x[0]), int(x[1])) for x in [y.split("-") for y in inp.readline().strip().split(',')]]
     return ranges
+
+def find_divisors(len_num):
+    divisors = [x for x in range(2, len_num // 2 + 1) if len_num % x == 0]
+    return divisors
 
 def check_pt_1(len_id, str_id):
     # part one
@@ -17,7 +20,7 @@ def check_pt_2(str_id):
     return (str_id + str_id).find(str_id, 1, -1) > -1
 
 def check_pt2_alt(len_id, str_id):
-    divisors = [x for x in range(1, len_id // 2 + 1) if len_id % x == 0]
+    divisors = find_divisors(len_id)
     for divisor in divisors:
         if str_id == str_id[divisor:] + str_id[:divisor]:
             return True
@@ -52,4 +55,4 @@ def main(filename, alt = False):
 
 # main(test_input, True)
 # main(test_input)
-main(puzzle_input, True)
+#main(puzzle_input, True)
