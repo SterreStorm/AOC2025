@@ -14,8 +14,7 @@ def check_pt_1(len_id, str_id):
     return len_id % 2 == 0 and int(str_id[0:len_id // 2]) == int(str_id[len_id // 2:])
 
 def check_pt_2(str_id):
-    i = (str_id + str_id).find(str_id, 1, -1)
-    return i > -1
+    return (str_id + str_id).find(str_id, 1, -1) > -1
 
 def check_pt2_alt(len_id, str_id):
     divisors = [x for x in range(1, len_id // 2 + 1) if len_id % x == 0]
@@ -29,8 +28,7 @@ def sum_invalid(ranges, alt):
     sum_pairs_pt1 = 0
     sum_pairs_pt2 = 0
     for pair in ranges:
-        current_id, end_range = pair
-        for current_id in range(current_id, end_range + 1):
+        for current_id in range(pair[0], pair[1]+ 1):
             str_id = str(current_id)
             len_id = len(str_id)
             if check_pt_1(len_id, str_id):
