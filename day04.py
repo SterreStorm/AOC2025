@@ -17,9 +17,6 @@ def find_paper_rolls(grid):
                 paper_rolls_loc.add((x, y))
     return paper_rolls_loc
 
-def find_bounds(grid):
-    return len(grid[0]), len(grid)
-
 def is_roll(paper_loc_set, roll, neighbour_direction):
     return (neighbour_direction[0] + roll[0] , neighbour_direction[1] + roll[1]) in paper_loc_set
 
