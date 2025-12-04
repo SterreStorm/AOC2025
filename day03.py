@@ -31,8 +31,8 @@ def find_joltage(battery, on_batteries):
 
 # Main function, prints the output of the puzzle
 def main(filename):
-    start_time = time.time_ns()
     dataset = "puzzle input" if filename.find("short") == -1 else "test input"
+    start_time = time.time_ns()
     batteries = parse_input(filename)
     sum_joltage_pt1 = sum([find_joltage(battery, 2) for battery in batteries])
     sum_joltage_pt2 = sum([find_joltage(battery, 12) for battery in batteries])
